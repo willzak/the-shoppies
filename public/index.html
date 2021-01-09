@@ -4,6 +4,9 @@
   <head>
     <meta charset="utf-8">
     <title>The Shoppies</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script type="text/javascript" src="/scripts/client.js"></script>
   </head>
 
   <body>
@@ -12,9 +15,10 @@
     </header>
 
     <div class="movie-search">
-      <section id="search-bar">
+      <section class="searchBox">
         <label>Movie Titles</label>
-        <input type="text" placeholder="Search for Movies..." />
+        <input type="text" placeholder="Search for Movies..." id="searchBar"/>
+        <button type="submit" id="search">Search</button>
       </section>
   
       <section>
@@ -26,6 +30,7 @@
 
     <section>
       <h3>Nominations</h3>
+      <div id="nomErr"></div>
       <ul id="nominations">
       </ul>
     </section>

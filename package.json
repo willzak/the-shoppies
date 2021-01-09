@@ -1,0 +1,26 @@
+{
+  "name": "the-shoppies",
+  "version": "1.0.0",
+  "description": "A movie nomination application for Shopify",
+  "main": "server/index.js",
+  "dependencies": {
+    "express": "^4.17.1",
+    "jquery": "^3.5.1",
+    "request": "^2.88.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \\\"Error: no test specified\\\" && exit 1",
+    "start": "node server/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/willzak/the-shoppies.git"
+  },
+  "author": "Will Zak",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/willzak/the-shoppies/issues"
+  },
+  "homepage": "https://github.com/willzak/the-shoppies#readme"
+}

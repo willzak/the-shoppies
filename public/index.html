@@ -7,31 +7,39 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script type="text/javascript" src="/scripts/client.js"></script>
+    <script src="https://kit.fontawesome.com/45487d7142.js" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="/styles/index.css" type="text/css">
+    <link rel="stylesheet" href="/styles/search.css" type="text/css">
   </head>
 
   <body>
     <header class="title">
       <h1>The Shoppies</h1>
-    </header>
 
-    <div class="movie-search">
       <section class="searchBox">
         <label>Movie Titles</label>
-        <input type="text" placeholder="Search for Movies..." id="searchBar"/>
-        <button type="submit" id="search">Search</button>
+        <div class="searchContainer">
+          <button class="fas fa-search" type="submit" id="search"></button>
+          <input type="text" placeholder="Search for Movies..." id="searchBar"/>
+        </div>
+      </section>
+    </header>
+
+    <div class="dashboard">
+
+      <section class="results">
+        <h3 id="resultsTitle"></h3>
+        <ul id="results">
+        </ul>
       </section>
   
-      <section>
-        <h3>Results</h3>
-        <ul id="results">
+      <section class="nominations">
+        <h3>Nominations</h3>
+        <div id="nomErr"></div>
+        <ul id="nominations">
         </ul>
       </section>
     </div>
 
-    <section>
-      <h3>Nominations</h3>
-      <div id="nomErr"></div>
-      <ul id="nominations">
-      </ul>
-    </section>
   </body>

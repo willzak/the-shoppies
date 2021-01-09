@@ -9,16 +9,33 @@ const replaceSpaces = function(input) {
 const createMovieElement = function(movieInfo) {
   let $movie = $(`
     <li>
-      <div class="movieInfo">
-        <p class="${movieInfo.imdbID}">${movieInfo.Title} (${movieInfo.Year})</p>
-      </div>
-      <div class="nominateBtn">
-        <button type="submit" class="nominateMovie" id="${movieInfo.imdbID}">Nominate</button>
+      <div class="listItem">
+        <div class="movieInfo">
+          <p class="${movieInfo.imdbID}">${movieInfo.Title} (${movieInfo.Year})</p>
+        </div>
+        <div class="nominateBtn">
+          <button type="submit" class="btn nominateMovie" id="${movieInfo.imdbID}">Nominate</button>
+        </div>
       </div>
     </li>
   `);
 
   return $movie;
+}
+
+const loadResults = function(req) {
+  $('#resultsTitle').empty();
+  $('#resultsTitle').html(`Results for "${req}"`);
+  
+  const movie = replaceSpaces(req);
+
+  $(function() {
+    $.ajax(`http://www.omdbapi.com/?s=${movie}&apikey=30f52383`, { method: "GET"})
+    .then(function(movies) {
+      $("#results").empty();
+      renderMovies(movies.Search)
+    })
+  })
 }
 
 // Render top 6 results to results box
@@ -29,12 +46,15 @@ const renderMovies = function(data) {
   }
 }
 
+// Render nomination list item
 const renderNomination = function(title, id) {
   let $nom = $(`
-    <li>
-      <div class="nomInfo">${title}</div>
-      <div class="removeBtn">
-        <button type="submit" class="removeNom" id="${id}">Remove</button>
+    <li class="nominationItem">
+      <div class="listItem">
+        <div class="nomInfo">${title}</div>
+        <div class="removeBtn">
+          <button type="submit" class="btn removeNom" id="${id}">Remove</button>
+        </div>
       </div>
     </li>
   `)
@@ -42,9 +62,10 @@ const renderNomination = function(title, id) {
   $("#nominations").append($nom);
 }
 
+// Class that tracks num of movies nominated
 class Nomination {
-  constructor(count) {
-    this.count = count;
+  constructor() {
+    this.count = 0;
     this.ids = [];
   }
 
@@ -63,22 +84,9 @@ class Nomination {
   }
 }
 
-let listItems = new Nomination(0);
+let listItems = new Nomination();
 
 $(document).ready(function() {
-  console.log(listItems);
-
-  const loadResults = function(req) {
-    const movie = replaceSpaces(req);
-
-    $(function() {
-      $.ajax(`http://www.omdbapi.com/?s=${movie}&apikey=30f52383`, { method: "GET"})
-      .then(function(movies) {
-        $("#results").empty();
-        renderMovies(movies.Search)
-      })
-    })
-  }
 
   $("#search").on('click', function(event) {
     event.preventDefault();
@@ -86,10 +94,21 @@ $(document).ready(function() {
     const searchText = $("#searchBar").serialize();
     const searchTextRaw = $("#searchBar").val();
     $("#searchBar").val("");
-
+  
     loadResults(searchTextRaw);
+
   })
 
+})
+
+$(document).on('keypress', function(e) {
+  if (e.which === 13) {
+    const searchText = $("#searchBar").serialize();
+    const searchTextRaw = $("#searchBar").val();
+    $("#searchBar").val("");
+
+    loadResults(searchTextRaw);
+  }
 })
 
 // To add a movie to the nomination list
@@ -117,7 +136,6 @@ $(document).on('click', '#results .nominateMovie', function(event) {
 $(document).on('click', '#nominations .removeNom', function(event) {
   event.preventDefault();
   let imdbID = this.id;
-  console.log(imdbID)
 
   listItems.removeNomination(imdbID);
   $("#nomErr").slideUp("slow");

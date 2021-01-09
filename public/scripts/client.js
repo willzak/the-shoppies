@@ -29,22 +29,44 @@ const renderMovies = function(data) {
   }
 }
 
-const renderNomination = function(nomInfo) {
+const renderNomination = function(title, id) {
   let $nom = $(`
     <li>
-      <div class="nomInfo">${nomInfo}</div>
+      <div class="nomInfo">${title}</div>
       <div class="removeBtn">
-        <button type="submit" class="removeNom">Remove</button>
+        <button type="submit" class="removeNom" id="${id}">Remove</button>
       </div>
     </li>
   `)
-  console.log(nomInfo)
+
   $("#nominations").append($nom);
 }
 
-let listItems = 0;
+class Nomination {
+  constructor(count) {
+    this.count = count;
+    this.ids = [];
+  }
+
+  addNomination(id) {
+    this.count += 1;
+    this.ids.push(id);
+  }
+
+  removeNomination(id) {
+    this.count -= 1;
+    for (let i = 0; i < this.ids.length; i++) {
+      if (id === this.ids[i]) {
+        this.ids.splice(i, 1);
+      }
+    }
+  }
+}
+
+let listItems = new Nomination(0);
 
 $(document).ready(function() {
+  console.log(listItems);
 
   const loadResults = function(req) {
     const movie = replaceSpaces(req);
@@ -73,18 +95,20 @@ $(document).ready(function() {
 // To add a movie to the nomination list
 $(document).on('click', '#results .nominateMovie', function(event) {
   event.preventDefault();
-
   let imdbID = this.id;
 
   const title = $(`.${imdbID}`).html();
 
-  listItems += 1;
-
-  if (listItems < 6) {
-    $("#nomErr").html("")
-    renderNomination(title);
-  } else {
-    $("#nomErr").html("🚨 You may only nominate 5 movies maximum 🚨")
+  if (listItems.count < 5 && !listItems.ids.includes(imdbID)) {
+    listItems.addNomination(imdbID);
+    $("#nomErr").slideUp("slow");
+    $("#nomErr").html("");
+    renderNomination(title, imdbID);
+  } else if (listItems.count >= 5) {
+    $("#nomErr").html("🚨 You may only nominate 5 movies maximum 🚨");
+    $("#nomErr").slideDown("slow");
+  } else if (listItems.ids.includes(imdbID)) {
+    $("#nomErr").html("🚨 You cannot nominate the same movie twice! 🚨");
     $("#nomErr").slideDown("slow");
   }
 })
@@ -92,11 +116,12 @@ $(document).on('click', '#results .nominateMovie', function(event) {
 // To remove a nomination
 $(document).on('click', '#nominations .removeNom', function(event) {
   event.preventDefault();
-  if (listItems < 6) {
-    $("#nomErr").html("")
-  }
-  listItems -= 1;
-  console.log(listItems)
+  let imdbID = this.id;
+  console.log(imdbID)
+
+  listItems.removeNomination(imdbID);
+  $("#nomErr").slideUp("slow");
+  $("#nomErr").html("");
 
   $(this).closest('li').remove();
 })

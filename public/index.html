@@ -17,9 +17,9 @@
   </head>
 
   <body>
-    <header class="header">
+    <div class="header">
       <div class="title">
-        <img src="../images/favicon.ico" width="50" height="50">
+        <img src="../images/favicon.ico" class="logo">
         <h1>The Shoppies</h1>
       </div>
 
@@ -27,10 +27,10 @@
         <label>Movie Titles</label>
         <div class="searchContainer">
           <button class="fas fa-search" type="submit" id="search"></button>
-          <input type="text" placeholder="Search for Movies..." id="searchBar"/>
+          <input type="text" placeholder="Search for Movies to Nominate..." id="searchBar"/>
         </div>
       </section>
-    </header>
+    </div>
     
 
     <div class="dashboard">
@@ -42,7 +42,7 @@
       </section>
   
       <section class="nominations">
-        <h3>Nominations</h3>
+        <h3>Your Nominations</h3>
         <div id="nomErr"></div>
         <ul id="nominations">
         </ul>

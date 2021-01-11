@@ -3,10 +3,12 @@
   flex-direction: column;
   border-radius: 5px;
   background-color: white;
+  box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
   padding: 2%;
 }
 
 label {
+  float: left;
   font-size: 0.8em;
   margin-bottom: 10px;
 }

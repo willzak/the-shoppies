@@ -4,7 +4,8 @@ body {
   justify-content: center;
   align-items: center;
   font-family: Arial, Helvetica, sans-serif;
-  background-color: rgb(206, 227, 236);
+  color: #595130;
+  background-color: #FFEA8A;
 }
 
 .header {
@@ -19,6 +20,7 @@ body {
   flex-direction: row;
   align-items: center;
   margin-bottom: 0.5%;
+  color: #573B00;
 }
 
 .logo {
@@ -26,8 +28,14 @@ body {
 }
 
 h1 {
-  font-family: 'Questrial', sans-serif;
   margin-left: 15px;
+  font-family: 'Questrial', sans-serif;
+  color: #573B00;
+}
+
+h3 {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  color: #573B00;
 }
 
 .dashboard {
@@ -47,39 +55,29 @@ h1 {
 }
 
 .nominationItem {
-  margin-top: 20px;
+  margin-top: 7.5%;
 }
 
-.btn {
-  margin-left: 10px;
-  padding: 5px 7px 5px 7px;
-  cursor: pointer;
-  background: none;
-  border: 1px solid grey;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-}
-
-.btn:focus {
-  background-color: #A0A0A0;
-  outline: none;
-}
-
-.results {
+.results-list {
   width: 50%;
   margin: 10px;
   margin-left: 0;
   padding: 15px;
   border-radius: 5px;
   box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
-  background-color: white;
+  background-color: #FCF1CD;
 }
 
-.nominations {
+.nominations-list {
   width: 50%;
   margin: 10px;
   margin-right: 0;
   padding: 15px;
   border-radius: 5px;
   box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
-  background-color: white;
+  background-color: #FCF1CD;
+}
+
+#nomErr {
+  color: red
 }

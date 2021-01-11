@@ -7,6 +7,7 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script type="text/javascript" src="/scripts/client.js"></script>
+    <script type="text/javascript" src="/scripts/submitForm.js"></script>
     <script src="https://kit.fontawesome.com/45487d7142.js" crossorigin="anonymous"></script>
 
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -14,6 +15,8 @@
 
     <link rel="stylesheet" href="/styles/index.css" type="text/css">
     <link rel="stylesheet" href="/styles/search.css" type="text/css">
+    <link rel="stylesheet" href="/styles/popup.css" type="text/css">
+    <link rel="stylesheet" href="/styles/button.css" type="text/css">
   </head>
 
   <body>
@@ -35,17 +38,26 @@
 
     <div class="dashboard">
 
-      <section class="results">
+      <section class="results-list">
         <h3 id="resultsTitle"></h3>
         <ul id="results">
         </ul>
       </section>
+
+      <div id="popup" class="popup hidden">
+        <h2>🏆 Thank You For Your Nominations! 🏆</h2>
+        <p>Are you ready to submit your nominations?</p>
+        <div class='btn-container'>
+          <button id='submitNoms' class='btn btn-confirm'>Submit</button>
+          <button id='cancel' class='btn btn-cancel'>Cancel</button>
+        </div>
+      </div>
   
-      <section class="nominations">
-        <h3>Your Nominations</h3>
+      <section class="nominations-list">
+        <h3>Your Nominations:</h3>
         <div id="nomErr"></div>
-        <ul id="nominations">
-        </ul>
+        <ol id="nominations">
+        </ol>
       </section>
     </div>
 

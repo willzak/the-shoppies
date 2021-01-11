@@ -1,4 +1,3 @@
-
 // Replace spaces in search with + to work in url
 const replaceSpaces = function(input) {
   let search = input.trim().split(" ").join("+");
@@ -53,7 +52,7 @@ const renderNomination = function(title, id) {
       <div class="listItem">
         <div class="nomInfo">${title}</div>
         <div class="removeBtn">
-          <button type="submit" class="btn removeNom" id="${id}">Remove</button>
+          <button type="submit" class="btn removeNom" id="nom-${id}">Remove</button>
         </div>
       </div>
     </li>
@@ -118,28 +117,38 @@ $(document).on('click', '#results .nominateMovie', function(event) {
 
   const title = $(`.${imdbID}`).html();
 
-  if (listItems.count < 5 && !listItems.ids.includes(imdbID)) {
+  if (listItems.ids.includes(imdbID)) {
+    $("#nomErr").html("You cannot nominate the same movie twice!");
+    $("#nomErr").slideDown("slow");
+  } else if (listItems.count === 5) {
+    $("#nomErr").html("You may only nominate a maximum of 5 movies");
+    $("#nomErr").slideDown("slow");
+  } else if (listItems.count === 4) {
     listItems.addNomination(imdbID);
+    $(this).addClass("btn-clicked");
     $("#nomErr").slideUp("slow");
     $("#nomErr").html("");
     renderNomination(title, imdbID);
-  } else if (listItems.count >= 5) {
-    $("#nomErr").html("🚨 You may only nominate 5 movies maximum 🚨");
-    $("#nomErr").slideDown("slow");
-  } else if (listItems.ids.includes(imdbID)) {
-    $("#nomErr").html("🚨 You cannot nominate the same movie twice! 🚨");
-    $("#nomErr").slideDown("slow");
+    $("#popup").removeClass("hidden");
+  }else if (listItems.count < 5) {
+    listItems.addNomination(imdbID);
+    $(this).addClass("btn-clicked");
+    $("#nomErr").slideUp("slow");
+    $("#nomErr").html("");
+    renderNomination(title, imdbID);
   }
+
 })
 
 // To remove a nomination
 $(document).on('click', '#nominations .removeNom', function(event) {
   event.preventDefault();
-  let imdbID = this.id;
-
+  let imdbID = this.id.slice(4);
+  $(`#${imdbID}`).removeClass("btn-clicked")
+  
   listItems.removeNomination(imdbID);
   $("#nomErr").slideUp("slow");
   $("#nomErr").html("");
-
+  
   $(this).closest('li').remove();
 })

@@ -7,5 +7,9 @@ $(document).on('click', '#popup .btn-cancel', function(event) {
 $(document).on('click', '#popup .btn-confirm', function(event) {
   event.preventDefault();
 
-  console.log('done!');
+  $(".results-list").addClass("hidden");
+  $(".nominations-list").addClass("hidden");
+  $(".searchBox").addClass("hidden");
+
+  $("#popup").html("<h2>Thank You For Your Submission!</h2><p>Your nominations have been counted for the 2021 Shoppies Awards!</p>")
 })

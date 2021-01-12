@@ -5,7 +5,7 @@ body {
   align-items: center;
   font-family: Arial, Helvetica, sans-serif;
   color: #595130;
-  background-color: #FFEA8A;
+  background-color: #F4F6F8;
 }
 
 .header {
@@ -64,8 +64,8 @@ h3 {
   margin-left: 0;
   padding: 15px;
   border-radius: 5px;
-  box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
-  background-color: #FCF1CD;
+  box-shadow:0 0 15px 4px rgba(0.5,0,0,0.06);
+  background-color: #F4F6F8;
 }
 
 .nominations-list {
@@ -74,8 +74,8 @@ h3 {
   margin-right: 0;
   padding: 15px;
   border-radius: 5px;
-  box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
-  background-color: #FCF1CD;
+  box-shadow:0 0 15px 4px rgba(0.5,0,0,0.06);
+  background-color: #F4F6F8;
 }
 
 #nomErr {

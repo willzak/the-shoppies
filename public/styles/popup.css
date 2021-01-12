@@ -11,12 +11,17 @@
   box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
 }
 
+.popup p {
+  font-size: 1.25em;
+  margin-bottom: 5%;
+}
+
 .hidden {
   display: none !important;
 }
 
 .btn-container {
-  width: 25%;
+  width: 40%;
   display: flex;
   justify-content: space-between;
 }

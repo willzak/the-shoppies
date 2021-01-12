@@ -14,13 +14,16 @@
 }
 
 .btn-confirm {
-  color: green;
-  border-color: green;
+  color: #8A6116;
+  background-color:#FFEA8A;
+  border: none;
+  padding: 5% 10% 5% 10%;
+  font-size: 1.25em;
 }
 
 .btn-cancel {
-  color: red;
-  border-color: red;
+  padding: 5% 10% 5% 10%;
+  font-size: 1.25em;
 }
 
 .btn-clicked {

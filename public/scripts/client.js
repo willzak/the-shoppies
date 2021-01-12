@@ -52,7 +52,7 @@ const renderNomination = function(title, id) {
       <div class="listItem">
         <div class="nomInfo">${title}</div>
         <div class="removeBtn">
-          <button type="submit" class="btn removeNom" id="nom-${id}">Remove</button>
+          <button type="submit" class="btn btn-cancel" id="nom-${id}">Remove</button>
         </div>
       </div>
     </li>
@@ -141,7 +141,7 @@ $(document).on('click', '#results .nominateMovie', function(event) {
 })
 
 // To remove a nomination
-$(document).on('click', '#nominations .removeNom', function(event) {
+$(document).on('click', '#nominations .btn-cancel', function(event) {
   event.preventDefault();
   let imdbID = this.id.slice(4);
   $(`#${imdbID}`).removeClass("btn-clicked")

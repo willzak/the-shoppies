@@ -16,8 +16,23 @@ body {
   background-color: #F4F6F8;
 }
 
+h1 {
+  margin-left: 15px;
+  font-weight: 500;
+  font-size: 27px;
+  line-height: 36px;
+  color: #212B36;
+}
+
+h3 {
+  font-size: 21px;
+  line-height: 28px;
+  font-weight: 400;
+  color: #212B36;
+}
+
 .header {
-  width: 70%;
+  width: 95%;
   margin-bottom: 0.5%;
   display: flex;
   flex-direction: column;
@@ -34,26 +49,11 @@ body {
   height: 90%;
 }
 
-h1 {
-  margin-left: 15px;
-  font-weight: 500;
-  font-size: 27px;
-  line-height: 36px;
-  color: #212B36;
-}
-
-h3 {
-  font-size: 21px;
-  line-height: 28px;
-  font-weight: 400;
-  color: #212B36;
-}
-
 .dashboard {
-  width: 70%;
+  width: 95%;
   display: flex;
-  flex-direction: row;
-  justify-content: space-around;
+  flex-direction: column;
+  align-items: center;
 }
 
 .listItem {
@@ -70,9 +70,8 @@ h3 {
 }
 
 .results-list {
-  width: 50%;
+  width: 95%;
   margin: 10px;
-  margin-left: 0;
   padding: 2.5%;
   border-radius: 5px;
   box-shadow:0 0 15px 4px rgba(0.5,0,0,0.06);
@@ -80,9 +79,8 @@ h3 {
 }
 
 .nominations-list {
-  width: 50%;
+  width: 95%;
   margin: 10px;
-  margin-right: 0;
   padding: 2.5%;
   border-radius: 5px;
   box-shadow:0 0 15px 4px rgba(0.5,0,0,0.06);
@@ -93,7 +91,7 @@ h3 {
   color: red
 }
 
-@media only screen and (min-width: 1240px) {
+@media only screen and (min-width: 1024px) {
   h1 {
     font-size: 42px;
     line-height: 44px;
@@ -102,5 +100,26 @@ h3 {
   h3 {
     font-size: 26px;
     line-height: 32px;
+  }
+
+  .header {
+    width: 70%;
+    margin-bottom: 0.5%;
+  }
+
+  .dashboard {
+    width: 70%;
+    flex-direction: row;
+    justify-content: space-around;
+  }
+
+  .results-list {
+    width: 50%;
+    margin-left: 0;
+  }
+
+  .nominations-list {
+    width: 50%;
+    margin-right: 0;
   }
 }

@@ -1,3 +1,10 @@
+$(document).on('click', '#welcome .btn-confirm', function(event) {
+  event.preventDefault();
+
+  $("#welcome").addClass("hidden");
+})
+
+
 $(document).on('click', '#popup .btn-cancel', function(event) {
   event.preventDefault();
 

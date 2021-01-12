@@ -32,10 +32,26 @@
           <input type="text" placeholder="Search for Movies to Nominate..." id="searchBar"/>
         </div>
       </section>
+
     </div>
     
 
     <div class="dashboard">
+
+      <div id="popup" class="popup hidden">
+        <h2>Thank You For Your Nominations!</h2>
+        <p>Are you ready to submit?</p>
+        <div class='btn-container'>
+          <button id='submitNoms' class='btn btn-confirm btn-event'>Submit</button>
+          <button id='cancel' class='btn btn-cancel btn-event'>Cancel</button>
+        </div>
+      </div>
+
+      <div id="welcome" class="popup ">
+        <h2>Get Ready For The 2021 Shoppies!</h2>
+        <p>Please nominate a total of 5 movies you would like to be considered for the 2021 Shoppies Awards using the search bar above.</p>
+        <button id='start' class='btn btn-confirm btn-event'>Get Started</button>
+      </div>
 
       <section class="results-list">
         <h3 id="resultsTitle"></h3>
@@ -43,15 +59,6 @@
         <ul id="results">
         </ul>
       </section>
-
-      <div id="popup" class="popup ">
-        <h2>🏆 Thank You For Your Nominations! 🏆</h2>
-        <p>Are you ready to submit?</p>
-        <div class='btn-container'>
-          <button id='submitNoms' class='btn btn-confirm btn-event'>Submit</button>
-          <button id='cancel' class='btn btn-cancel btn-event'>Cancel</button>
-        </div>
-      </div>
   
       <section class="nominations-list">
         <h3>Your Nominations:</h3>

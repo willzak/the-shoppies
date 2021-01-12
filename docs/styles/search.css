@@ -3,13 +3,13 @@
   flex-direction: column;
   border-radius: 5px;
   background-color: #F9FAFB;
-  box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
+  box-shadow: 0 0 15px 4px rgba(0,0,0,0.06);
   padding: 2%;
 }
 
 label {
   float: left;
-  font-size: 0.8em;
+  font-size: 18px;
   margin-bottom: 10px;
 }
 
@@ -26,6 +26,7 @@ label {
   background-color: #F9FAFB;
   color: #454F5B;
   text-align: left;
+  font-size: 18px;
 }
 
 ::placeholder {
@@ -51,5 +52,16 @@ input:focus {
   border-radius: 5px;
   display: flex;
   flex-direction: row;
-  align-items: baseline;
+  align-items: center;
+}
+
+@media only screen and (min-width: 1024px) {
+
+  label {
+    font-size: 0.8em;
+  }
+  
+  #searchBar {
+    font-size: 0.8em;
+  }
 }

@@ -87,8 +87,6 @@ let listItems = new Nomination();
 
 $(document).ready(function() {
 
-
-
   $("#search").on('click', function(event) {
     event.preventDefault();
 

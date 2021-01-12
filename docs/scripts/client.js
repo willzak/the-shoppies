@@ -22,6 +22,15 @@ const createMovieElement = function(movieInfo) {
   return $movie;
 }
 
+// Render top 6 results to results box
+const renderMovies = function(data) {
+  for (let n = 0; n <= 5; n++) {
+    let output = createMovieElement(data[n]);
+    $(`#results`).append(output);
+  }
+}
+
+// Makes call to API for results
 const loadResults = function(req) {
   $('#resultsTitle').empty();
   $('#resultsTitle').html(`Results for "${req}"`);
@@ -35,14 +44,6 @@ const loadResults = function(req) {
       renderMovies(movies.Search)
     })
   })
-}
-
-// Render top 6 results to results box
-const renderMovies = function(data) {
-  for (let n = 0; n <= 5; n++) {
-    let output = createMovieElement(data[n]);
-    $(`#results`).append(output);
-  }
 }
 
 // Render nomination list item
@@ -61,7 +62,7 @@ const renderNomination = function(title, id) {
   $("#nominations").append($nom);
 }
 
-// Class that tracks num of movies nominated
+// Class that tracks number of movies nominated and their IDs
 class Nomination {
   constructor() {
     this.count = 0;
@@ -86,20 +87,21 @@ class Nomination {
 let listItems = new Nomination();
 
 $(document).ready(function() {
+  $("#nomErr").slideUp(1);
 
   $("#search").on('click', function(event) {
     event.preventDefault();
-
+    
     const searchText = $("#searchBar").serialize();
-    const searchTextRaw = $("#searchBar").val();
     $("#searchBar").val("");
   
-    loadResults(searchTextRaw);
+    loadResults(searchText);
 
   })
 
 })
 
+// To submit search using the enter button
 $(document).on('keypress', function(event) {
   if (event.which === 13) {
     const searchText = $("#searchBar").serialize();

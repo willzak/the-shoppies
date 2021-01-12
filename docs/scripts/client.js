@@ -29,7 +29,7 @@ const loadResults = function(req) {
   const movie = replaceSpaces(req);
 
   $(function() {
-    $.ajax(`http://www.omdbapi.com/?s=${movie}&apikey=30f52383`, { method: "GET"})
+    $.ajax(`https://www.omdbapi.com/?s=${movie}&type=movie&apikey=30f52383`, { method: "GET"})
     .then(function(movies) {
       $("#results").empty();
       renderMovies(movies.Search)

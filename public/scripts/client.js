@@ -87,6 +87,8 @@ let listItems = new Nomination();
 
 $(document).ready(function() {
 
+
+
   $("#search").on('click', function(event) {
     event.preventDefault();
 
@@ -100,8 +102,8 @@ $(document).ready(function() {
 
 })
 
-$(document).on('keypress', function(e) {
-  if (e.which === 13) {
+$(document).on('keypress', function(event) {
+  if (event.which === 13) {
     const searchText = $("#searchBar").serialize();
     const searchTextRaw = $("#searchBar").val();
     $("#searchBar").val("");
